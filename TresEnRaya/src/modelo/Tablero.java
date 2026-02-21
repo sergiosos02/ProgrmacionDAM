@@ -2,17 +2,17 @@ package modelo;
 
 public class Tablero {
 
-    private final int DIM = 3;
+    private final int dimension = 3;
     private Tipo[][] matriz;
 
     public Tablero() {
-        matriz = new Tipo[DIM][DIM];
+        matriz = new Tipo[dimension][dimension];
         inicializar();
     }
 
     private void inicializar() {
-        for (int i = 0; i < DIM; i++)
-            for (int j = 0; j < DIM; j++)
+        for (int i = 0; i < dimension; i++)
+            for (int j = 0; j < dimension; j++)
                 matriz[i][j] = Tipo.BLANCO;
     }
 
@@ -39,7 +39,7 @@ public class Tablero {
     public boolean isBloqueada(Coordenada c) {
         for (int i = c.getX() - 1; i <= c.getX() + 1; i++) {
             for (int j = c.getY() - 1; j <= c.getY() + 1; j++) {
-                if (i >= 0 && i < DIM && j >= 0 && j < DIM) {
+                if (i >= 0 && i < dimension && j >= 0 && j < dimension) {
                     if (matriz[i][j] == Tipo.BLANCO)
                         return false;
                 }
@@ -55,14 +55,14 @@ public class Tablero {
     public boolean isTresEnRaya() {
 
         // Filas
-        for (int i = 0; i < DIM; i++)
+        for (int i = 0; i < dimension; i++)
             if (matriz[i][0] != Tipo.BLANCO &&
                 matriz[i][0] == matriz[i][1] &&
                 matriz[i][1] == matriz[i][2])
                 return true;
 
         // Columnas
-        for (int j = 0; j < DIM; j++)
+        for (int j = 0; j < dimension; j++)
             if (matriz[0][j] != Tipo.BLANCO &&
                 matriz[0][j] == matriz[1][j] &&
                 matriz[1][j] == matriz[2][j])
@@ -82,3 +82,4 @@ public class Tablero {
         return false;
     }
 }
+
